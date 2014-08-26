@@ -1,0 +1,18 @@
+.collapsetrigger {
+  background: url("./images/collapse-btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  cursor: pointer;
+  float: right;
+  height: 17px;
+  margin-top: -21px;
+  position: relative;
+  width: 32px;
+  z-index: 45;
+}
+
+.collapseactive {
+  background-position: left top;
+}
+
+.collapseinactive {
+  background-position: left bottom;
+}

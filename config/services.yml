@@ -1,0 +1,27 @@
+services:
+    alg.CollapseCategories.listener:
+        class: alg\CollapseCategories\event\listener
+        arguments:
+            - @config
+            - @dbal.conn
+            - @auth
+            - @template
+            - @user
+            - %core.root_path%
+            - %core.php_ext%
+        tags:
+            - { name: event.listener }
+    alg.CollapseCategories.CollapseCategories_ajax_handler:
+        class: alg\CollapseCategories\controller\CollapseCategories_ajax_handler
+        arguments:
+            - @config
+            - @dbal.conn
+            - @auth
+            - @template
+            - @user
+            - @cache.driver
+            - %core.root_path%
+            - %core.php_ext%
+            - @request
+            - %core.table_prefix%
+
