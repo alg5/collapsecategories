@@ -43,18 +43,10 @@ protected $thankers = array();
 	{
         if($status)
         {
-            $sql = 'SELECT count(*) as counter  FROM ' . FORUMS_CAT_STATUS_TABLE .
-            ' WHERE forum_id=' . $forum . ' AND user_id=' . $user;
-            $result = $this->db->sql_query($sql);
-            $is_forum_cat_status =  $this->db->sql_fetchfield('counter');
-            $this->db->sql_freeresult($result);
-            if (!$is_forum_cat_status)
-            {
-                 $sql = "INSERT INTO " . FORUMS_CAT_STATUS_TABLE .
-						                " (forum_id, user_id) " .
-						                " VALUES ( " . $forum . ", " .  $user  . ")" ;
-	            $this->db->sql_query($sql);		
-            }
+            $sql = "INSERT IGNORE  INTO " . FORUMS_CAT_STATUS_TABLE .
+                                " (forum_id, user_id) " .
+                                " VALUES ( " . $forum . ", " .  $user  . ")" ;
+            $this->db->sql_query($sql);		
         }
         else
         {
