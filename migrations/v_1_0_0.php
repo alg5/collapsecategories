@@ -12,7 +12,7 @@ namespace alg\CollapseCategories\migrations;
 
 class v_1_0_0 extends \phpbb\db\migration\migration
 {
-	
+
 	public function effectively_installed()
 	{
 		return isset($this->config['CollapseCategories']) && version_compare($this->config['CollapseCategories'], '1.0.0', '>=');
@@ -40,7 +40,7 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 
 	public function revert_schema()
 	{
-		return 	array(	
+		return 	array(
 			'drop_tables'	=> array($this->table_prefix . 'forums_cat_status'),
 		);
 	}
@@ -48,17 +48,17 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return array(
-	
+
 			// Current version
 			array('config.add', array('CollapseCategories', '1.0.0')),
-  
+
 		);
 	}
 	public function revert_data()
 	{
 		return array(
 			// remove from configs
- 			// Current version
+			// Current version
 			array('config.remove', array('CollapseCategories')),
 
 		);

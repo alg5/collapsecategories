@@ -13,15 +13,15 @@ namespace alg\CollapseCategories\controller;
 * @ignore
 */
 
-if (!defined('IN_PHPBB'))
+/*if (!defined('IN_PHPBB'))
 {
 	exit;
-}
+}*/
 
 class CollapseCategories_ajax_handler
 {
 protected $thankers = array();
-   public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\template\template $template, \phpbb\user $user, \phpbb\cache\driver\driver_interface $cache, $phpbb_root_path, $php_ext, \phpbb\request\request_interface $request, $table_prefix)
+	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\template\template $template, \phpbb\user $user, \phpbb\cache\driver\driver_interface $cache, $phpbb_root_path, $php_ext, \phpbb\request\request_interface $request, $table_prefix)
 	{
 		$this->config = $config;
 		$this->db = $db;
@@ -46,18 +46,17 @@ protected $thankers = array();
 			$sql = "INSERT IGNORE  INTO " . FORUMS_CAT_STATUS_TABLE .
 								" (forum_id, user_id) " .
 								" VALUES ( " . $forum . ", " .  $user  . ")" ;
-			$this->db->sql_query($sql);		
+			$this->db->sql_query($sql);
 		}
 		else
 		{
-				$sql = "DELETE FROM " . FORUMS_CAT_STATUS_TABLE . 
+				$sql = "DELETE FROM " . FORUMS_CAT_STATUS_TABLE .
 							' WHERE forum_id=' . $forum . ' AND user_id=' . $user;
-			$this->db->sql_query($sql);		
+			$this->db->sql_query($sql);
 		}
 		$json_response = new \phpbb\json_response;
-		   // $json_response->send('OK');
+		// $json_response->send('OK');
 			$json_response->send($sql);
 
 	}
- 
 }
