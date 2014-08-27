@@ -43,7 +43,7 @@ class listener implements EventSubscriberInterface
 			define('FORUMS_CAT_STATUS_TABLE', $table_prefix . 'forums_cat_status');
 		}
 
-	 }
+	}
 
 	static public function getSubscribedEvents()
 	{
@@ -52,7 +52,7 @@ class listener implements EventSubscriberInterface
 				'core.display_forums_modify_category_template_vars'		=> 'display_forums_modify_category_template_vars',
 		);
 	}
-	
+
 	public function display_forums_modify_template_vars($event)
 	{
 		$forum_row = $event['forum_row'];
@@ -85,7 +85,6 @@ class listener implements EventSubscriberInterface
 				$result = $this->db->sql_query($sql);
 				$forum_cat_status =  $this->db->sql_fetchfield('counter');
 				$this->db->sql_freeresult($result);
-	
 		}
 		$cat_row = array_merge($cat_row, array(
 			'S_FORUM_CAT_STATUS' => $forum_cat_status,
