@@ -18,7 +18,7 @@ namespace alg\CollapseCategories\controller;
 	exit;
 }*/
 
-class CollapseCategories_ajax_handler
+class collapsecategories_ajax_handler
 {
 protected $thankers = array();
 	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\template\template $template, \phpbb\user $user, \phpbb\cache\driver\driver_interface $cache, $phpbb_root_path, $php_ext, \phpbb\request\request_interface $request, $table_prefix)

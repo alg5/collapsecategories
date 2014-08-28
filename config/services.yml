@@ -11,8 +11,8 @@ services:
             - %core.php_ext%
         tags:
             - { name: event.listener }
-    alg.CollapseCategories.CollapseCategories_ajax_handler:
-        class: alg\CollapseCategories\controller\CollapseCategories_ajax_handler
+    alg.CollapseCategories.collapsecategories_ajax_handler:
+        class: alg\CollapseCategories\controller\collapsecategories_ajax_handler
         arguments:
             - @config
             - @dbal.conn
