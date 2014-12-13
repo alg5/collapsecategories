@@ -25,34 +25,39 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class listener implements EventSubscriberInterface
 {
 
-	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\auth\auth $auth, \phpbb\template\template $template, \phpbb\user $user, $phpbb_root_path, $php_ext)
+	public function __construct( \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\user $user, $forums_cat_status_table)
 	{
-
-		global $table_prefix;
-
+		$this->db = $db;
 		$this->template = $template;
 		$this->user = $user;
-		$this->auth = $auth;
-		$this->db = $db;
-		$this->config = $config;
-		$this->phpbb_root_path = $phpbb_root_path;
-		$this->php_ext = $php_ext;
+		$this->forums_cat_status_table = $forums_cat_status_table;
 		$this->first_row = 0;
-		if (!defined('FORUMS_CAT_STATUS_TABLE'))
-		{
-			define('FORUMS_CAT_STATUS_TABLE', $table_prefix . 'forums_cat_status');
-		}
-
 	}
 
 	static public function getSubscribedEvents()
 	{
 		return array(
-				'core.display_forums_modify_template_vars'		=> 'display_forums_modify_template_vars',
-				'core.display_forums_modify_category_template_vars'		=> 'display_forums_modify_category_template_vars',
+			'core.user_setup'			=> 'user_setup',
+			'core.display_forums_modify_template_vars'		=> 'display_forums_modify_template_vars',
+			'core.display_forums_modify_category_template_vars'		=> 'display_forums_modify_category_template_vars',
 		);
 	}
+	 public function user_setup($event)
+	 {
+ 		$sql = 'SELECT * FROM ' . $this->forums_cat_status_table .
+						' WHERE  user_id=' . $this->user->data['user_id'];
+		$result = $this->db->sql_query($sql);
+		$cat_status_ary = array();
 
+		while ($row = $this->db->sql_fetchrow($result))
+		{
+			$cat_status_ary[] = $row;
+		}
+		$this->db->sql_freeresult($result);
+		$this->cat_status_ary = $cat_status_ary;
+		$this->user->add_lang_ext('alg/CollapseCategories', 'CollapseCategories');
+
+	 }
 	public function display_forums_modify_template_vars($event)
 	{
 		$forum_row = $event['forum_row'];
@@ -61,11 +66,7 @@ class listener implements EventSubscriberInterface
 		$this->first_row++;
 		if($this->user->data['is_registered'] &&  ($this->first_row == 1 || $forum_row['S_IS_CAT'] || $forum_row['S_NO_CAT'] ))
 		{
-				$sql = 'SELECT count(*) as counter  FROM ' . FORUMS_CAT_STATUS_TABLE .
-								' WHERE forum_id=' . $forum_row['FORUM_ID'] . ' AND user_id=' . $this->user->data['user_id'];
-				$result = $this->db->sql_query($sql);
-				$forum_cat_status =  $this->db->sql_fetchfield('counter');
-				$this->db->sql_freeresult($result);
+				$forum_cat_status =  $this->get_cat_status($forum_row['FORUM_ID']);
 		}
 		$forum_row = array_merge($forum_row, array(
 			'S_FORUM_CAT_STATUS' => $forum_cat_status,
@@ -75,24 +76,27 @@ class listener implements EventSubscriberInterface
 	}
 	public function display_forums_modify_category_template_vars($event)
 	{
-
 		$cat_row = $event['cat_row'];
 		$forum_cat_status = 0;
 		if($this->user->data['is_registered'] &&  ( $cat_row['S_IS_CAT'] || $cat_row['S_NO_CAT'] ))
 		{
-				$sql = 'SELECT count(*) as counter FROM ' . FORUMS_CAT_STATUS_TABLE .
-								' WHERE forum_id=' . $cat_row['FORUM_ID'] . ' AND user_id=' . $this->user->data['user_id'];
-				$result = $this->db->sql_query($sql);
-				$forum_cat_status =  $this->db->sql_fetchfield('counter');
-				$this->db->sql_freeresult($result);
+			$forum_cat_status =  $this->get_cat_status($cat_row['FORUM_ID']);
 		}
 		$cat_row = array_merge($cat_row, array(
-			'S_FORUM_CAT_STATUS' => $forum_cat_status,
+			'S_FORUM_CAT_STATUS' =>  $forum_cat_status,
 			'S_USER_ID' => $this->user->data['user_id'],
 		));
 		$event['cat_row'] = $cat_row;
-
-//		print_r( $event['cat_row']);
 	}
-
+	 private function get_cat_status($forum_id)
+	 {
+		foreach ($this->cat_status_ary as $row)
+		{
+			if ($row['forum_id'] == $forum_id)
+			{
+				return 1;
+			}
+		}
+		return 0;
+	 }
 }

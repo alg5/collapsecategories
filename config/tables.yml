@@ -1,0 +1,2 @@
+parameters:
+    tables.forums_cat_status: %core.table_prefix%forums_cat_status

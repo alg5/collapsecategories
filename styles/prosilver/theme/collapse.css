@@ -6,7 +6,7 @@
   margin-top: -21px;
   position: relative;
   width: 32px;
-  z-index: 45;
+  z-index: 1;
 }
 
 .collapseactive {
@@ -15,4 +15,11 @@
 
 .collapseinactive {
   background-position: left bottom;
+}
+.collapse-unread_post {
+  background: url("./images/icon_mini_unread_forums.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  width:16px;
+  height:16px;
+  display:inline-block;
+	
 }

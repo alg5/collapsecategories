@@ -2,14 +2,14 @@
     "name": "alg/CollapseCategories",
     "type": "phpbb-extension",
     "description": "",
-    "homepage": "http://phpbbguru.net",
-    "version": "0.0.1",
-    "time": "2014-08-12",
+    "homepage": "http://chugunok.net",
+    "version": "0.0.2",
+    "time": "2014-12-12",
     "license": "GPL-2.0",
     "authors": [
         {
             "name": "alg",
-            "homepage": "http://phpbbguru.net",
+            "homepage": "http://chugunok.net",
             "role": "Developer"
         }
     ],
@@ -23,6 +23,11 @@
         "display-name": "Collapse Categories",
         "soft-require": {
 		    "phpbb/phpbb": "3.1.*@dev"
+        },
+        "version-check": {
+            "host": "alg5.github.io",
+            "directory": "/versions",
+            "filename": "collapsecategories.json"
         }
     }
 }
