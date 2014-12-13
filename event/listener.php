@@ -25,7 +25,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class listener implements EventSubscriberInterface
 {
 
-	public function __construct( \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\user $user, $forums_cat_status_table)
+	public function __construct(\phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\user $user, $forums_cat_status_table)
 	{
 		$this->db = $db;
 		$this->template = $template;
@@ -42,9 +42,9 @@ class listener implements EventSubscriberInterface
 			'core.display_forums_modify_category_template_vars'		=> 'display_forums_modify_category_template_vars',
 		);
 	}
-	 public function user_setup($event)
-	 {
- 		$sql = 'SELECT * FROM ' . $this->forums_cat_status_table .
+	public function user_setup($event)
+	{
+		$sql = 'SELECT * FROM ' . $this->forums_cat_status_table .
 						' WHERE  user_id=' . $this->user->data['user_id'];
 		$result = $this->db->sql_query($sql);
 		$cat_status_ary = array();
@@ -57,7 +57,7 @@ class listener implements EventSubscriberInterface
 		$this->cat_status_ary = $cat_status_ary;
 		$this->user->add_lang_ext('alg/CollapseCategories', 'CollapseCategories');
 
-	 }
+	}
 	public function display_forums_modify_template_vars($event)
 	{
 		$forum_row = $event['forum_row'];
@@ -88,8 +88,8 @@ class listener implements EventSubscriberInterface
 		));
 		$event['cat_row'] = $cat_row;
 	}
-	 private function get_cat_status($forum_id)
-	 {
+	private function get_cat_status($forum_id)
+	{
 		foreach ($this->cat_status_ary as $row)
 		{
 			if ($row['forum_id'] == $forum_id)
@@ -98,5 +98,5 @@ class listener implements EventSubscriberInterface
 			}
 		}
 		return 0;
-	 }
+	}
 }
