@@ -3,8 +3,8 @@
     "type": "phpbb-extension",
     "description": "",
     "homepage": "http://chugunok.net",
-    "version": "0.0.2",
-    "time": "2014-12-12",
+    "version": "1.0.3",
+    "time": "2014-14-12",
     "license": "GPL-2.0",
     "authors": [
         {

@@ -20,7 +20,6 @@ namespace alg\CollapseCategories\controller;
 
 class collapsecategories_ajax_handler
 {
-protected $thankers = array();
 	public function __construct(\phpbb\db\driver\driver_interface $db, $forums_cat_status_table)
 	{
 		$this->db = $db;

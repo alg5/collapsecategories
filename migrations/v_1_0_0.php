@@ -15,7 +15,7 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 
 	public function effectively_installed()
 	{
-		return isset($this->config['CollapseCategories']) && version_compare($this->config['CollapseCategories'], '1.0.0', '>=');
+		return isset($this->config['CollapseCategories']) && version_compare($this->config['CollapseCategories'], '1.0.3', '>=');
 	}
 
 	static public function depends_on()
@@ -50,7 +50,7 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 		return array(
 
 			// Current version
-			array('config.add', array('CollapseCategories', '1.0.0')),
+			array('config.add', array('CollapseCategories', '1.0.3')),
 
 		);
 	}
