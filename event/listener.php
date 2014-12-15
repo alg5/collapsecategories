@@ -55,7 +55,7 @@ class listener implements EventSubscriberInterface
 		}
 		$this->db->sql_freeresult($result);
 		$this->cat_status_ary = $cat_status_ary;
-		$this->user->add_lang_ext('alg/CollapseCategories', 'CollapseCategories');
+		$this->user->add_lang_ext('alg/CollapseCategories', 'collapsecategories');
 
 	}
 	public function display_forums_modify_template_vars($event)
