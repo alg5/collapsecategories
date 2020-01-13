@@ -1,6 +1,57 @@
-<!-- IF S_INDEX -->
+<!-- IF true -->
 <script type="text/javascript">
+   
     var COLLAPSE_CATEGORIES_UNREAD_POST = '{L_COLLAPSE_CATEGORIES_UNREAD_POST}';
+    var S_CATEGORIES_COLLAPSEBALED = '{S_CATEGORIES_COLLAPSEBALED}';
+    var S_ID_ARR = '{S_ID_ARR}';   
+    var S_CLASS_ARR = '{S_CLASS_ARR}'; 
+    var S_COLLAPSE_BLOCKS = '{S_COLLAPSE_BLOCKS}';  
+    //console.log(S_COLLAPSE_BLOCKS);
+    var collapse_blocks_arr = $.parseJSON(S_COLLAPSE_BLOCKS);
+    console.log(collapse_blocks_arr);
+    $.each(collapse_blocks_arr, function( index, item ) {
+   
+        //console.log(item);
+         var block_status;
+        var id = item.block_id.trim();
+        var parentId = 'clps_' + id;
+         var block_status;
+         var txt_toggle;
+         var aria_hidden_status;
+         var icon_class;
+         var hide_class = '';
+         if (localStorage.getItem(id) === null) {
+             block_status = 0;
+             aria_hidden_status = false;
+             icon_class = "fa-chevron-up"
+             txt_toggle = item.text_close;
+         }
+         else
+         {
+            block_status = localStorage.getItem(id);
+            aria_hidden_status = parseInt(block_status) > 0;
+            icon_class = parseInt(block_status) > 0 ? "fa-chevron-down": "fa-chevron-up";
+            txt_toggle =  parseInt(block_status) > 0 ? item.text_open : item.text_close;
+            hide_class = parseInt(block_status) > 0 ? "collapse-hide" : "";
+            if (parseInt(block_status) > 0)
+            {
+                $("#"+ id).hide();
+            }
+         }
+  
+          var divParent = '<div id="' +  parentId + '" class="collapsetrigger-custom"  data-status="' + block_status + '">';
+                divParent += '<span><i id="icon_' + id + '"class="fa ' + icon_class + '" aria-hidden="false"></i></span>';
+                divParent +=  txt_toggle + '</div>';
+          console.log("divParent = " + divParent);
+           $("#"+ id).before(divParent);
+           console.log($("#" + parentId));
+        
+    });
+    
+   
+//  alert('S_ID_ARR = '  + S_ID_ARR);
+
+
 </script>
-	<!-- INCLUDEJS CollapseCategories.js -->
+	<!-- INCLUDEJS collapsecategories.js -->
 <!-- ENDIF -->

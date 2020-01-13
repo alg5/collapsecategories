@@ -1,19 +1,25 @@
 imports:
     - { resource: tables.yml }
-
 services:
-    alg.CollapseCategories.listener:
-        class: alg\CollapseCategories\event\listener
+    alg.collapsecategories.listener:
+        class: alg\collapsecategories\event\listener
         arguments:
-            - @dbal.conn
-            - @template
-            - @user
-            - %tables.forums_cat_status%
+            - '@dbal.conn'
+            - '@template'
+            - '@user'
+            - '@request'
+            - '@config'
+            - '%tables.forums_cat_status%'
+            - '%tables.collapse_blocks%'
         tags:
             - { name: event.listener }
-    alg.CollapseCategories.collapsecategories_ajax_handler:
-        class: alg\CollapseCategories\controller\collapsecategories_ajax_handler
+    alg.collapsecategories.collapsecategories_handler:
+        class: alg\collapsecategories\controller\collapsecategories_handler
         arguments:
-            - @dbal.conn
-            - %tables.forums_cat_status%
-
+            - '@dbal.conn'
+            - '@user'
+            - '@request'
+            - '@config'
+            - '@controller.helper'
+            - '%tables.forums_cat_status%'
+            - '%tables.collapse_blocks%'
