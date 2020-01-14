@@ -38,7 +38,7 @@ class install_schema extends \phpbb\db\migration\migration
 					'PRIMARY_KEY'	=> array('forum_id', 'user_id'),
 				),
 	//				),
-				
+
 				$this->table_prefix . 'collapse_blocks' => array
 				(
 					'COLUMNS'		=> array
@@ -59,7 +59,7 @@ class install_schema extends \phpbb\db\migration\migration
 					'drop_tables'	=> array($this->table_prefix . 'forums_cat_status'),
 					'drop_tables'	=> array($this->table_prefix . 'collapse_blocks'),
 	//                    'drop_columns' => array($this->table_prefix . 'styles' => array('style_collapsible'),
-	//            ), 
+	//            ),
 			);
 	}
 }

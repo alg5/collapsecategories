@@ -64,15 +64,14 @@ $lang = array_merge($lang, array(
 	'ACP_COLLAPSECATEGORIES_DELETED'						=> 'Сворачиваемый блок удалён',
 	'ACP_COLLAPSECATEGORIES_ADD_NEW_BLOCK'					 => 'Добавить  блок',
 	'ACP_COLLAPSECATEGORIES_TEXT_OPEN_DEFAULT'				 => 'Скрыть',
-	'ACP_COLLAPSECATEGORIES_TEXT_CLOSE_DEFAULT'			=> 'Показать',  
+	'ACP_COLLAPSECATEGORIES_TEXT_CLOSE_DEFAULT'			=> 'Показать',
 	'ACP_COLLAPSECATEGORIES_ERROR_ID_MISSED'			 => 'ID сворачиваемого блока не задан',
 	'ACP_COLLAPSECATEGORIES_ERROR_ID_EXISTS'			=> 'Блок %s уже находится в таблице',
-	'ACP_COLLAPSECATEGORIES_BLOCK_ADDED_SUCCESSFULLY'  => 'Сворачиваемый блок добавлен', 
-	'ACP_COLLAPSECATEGORIES_BLOCK_EDITED_SUCCESSFULLY'  => 'Сворачиваемый блок изменён', 
+	'ACP_COLLAPSECATEGORIES_BLOCK_ADDED_SUCCESSFULLY'  => 'Сворачиваемый блок добавлен',
+	'ACP_COLLAPSECATEGORIES_BLOCK_EDITED_SUCCESSFULLY'  => 'Сворачиваемый блок изменён',
 	'ACP_COLLAPSECATEGORIES_BTN_EDIT'					=> 'Редактировать ',
 	'ACP_COLLAPSECATEGORIES_BTN_DELETE'					=> 'Удалить ',
 	'ACP_COLLAPSECATEGORIES_BTN_SAVE'					=> 'Сохранить ',
 	'ACP_COLLAPSECATEGORIES_BTN_CANCEL'					=> 'Вернуть ',
 
 	));
-

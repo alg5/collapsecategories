@@ -20,14 +20,7 @@ namespace alg\collapsecategories\controller;
 
 class collapsecategories_handler
 {
-	public function __construct(\phpbb\db\driver\driver_interface $db
-											, \phpbb\user $user
-											, \phpbb\request\request_interface $request
-											, \phpbb\config\config $config
-											, \phpbb\controller\helper $controller_helper
-											, $forums_cat_status_table
-											, $collapse_blocks_table
-										)
+	public function __construct(\phpbb\db\driver\driver_interface $db, \phpbb\user $user, \phpbb\request\request_interface $request, \phpbb\config\config $config, \phpbb\controller\helper $controller_helper, $forums_cat_status_table, $collapse_blocks_table)
 	{
 			$this->db = $db;
 			$this->user = $user;

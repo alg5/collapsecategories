@@ -21,11 +21,11 @@ class acp_collapsecategories_common_module
 
 			$this->db = $db;
 			$this->user = $user;
-			$this->template = $template;  
-			$this->request = $request;             
-			$this->config = $config;             
-			$this->phpbb_container = $phpbb_container;             
-			$this->table_prefix = $table_prefix;             
+			$this->template = $template;
+			$this->request = $request;
+			$this->config = $config;
+			$this->phpbb_container = $phpbb_container;
+			$this->table_prefix = $table_prefix;
 			$this->controller = $this->phpbb_container->get('alg.collapsecategories.collapsecategories_handler');
 
 			$this->user->add_lang('acp/common');
@@ -33,7 +33,7 @@ class acp_collapsecategories_common_module
 			$this->tpl_name = 'acp_collapsecategories_common';
 			$this->page_title = $user->lang('ACP_COLLAPSECATEGORIES');
 			$this->set_styles_list();
-			
+
 			$sql = 'SELECT * FROM ' . $this->table_prefix . 'collapse_blocks ORDER BY block_id';
 			$result = $this->db->sql_query($sql);
 			foreach ($result as $row)
@@ -45,9 +45,8 @@ class acp_collapsecategories_common_module
 						'CUSTOM_CSS'		=> '' /*$row['custom_css']*/,
 
 				));
-			  }        
-		 
-			
+			  }
+
 			$this->template->assign_vars(array(
 				'S_COLLAPSE__ON_INDEX_ONLY'	=> true,
 				'S_ADM_COLLAPSECATEGORIES_PAGE'	=> true,
@@ -69,7 +68,7 @@ class acp_collapsecategories_common_module
 
 			return $rows;
 	}
-		
+
 	/**
 	* List installed styles
 	*/
@@ -86,7 +85,7 @@ class acp_collapsecategories_common_module
 			{
 				$pos = strpos($ids, $style['style_id']);
 	//                print_r('id =' . $style['style_id'] . '; pos = ' . $pos . '***\n/n/r' );
-				
+
 				$this->template->assign_block_vars('styles_list', array(
 					'ID'                       => $style['style_id'],
 					'NAME'                   => $style['style_name'],

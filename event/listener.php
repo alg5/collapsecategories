@@ -25,15 +25,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class listener implements EventSubscriberInterface
 {
 
-	public function __construct(\phpbb\db\driver\driver_interface $db
-											, \phpbb\template\template $template
-											, \phpbb\user $user
-											, \phpbb\request\request_interface $request
-											, \phpbb\config\config $config
-											, $forums_cat_status_table
-											, $collapse_blocks_table
-			
-											)
+	public function __construct(\phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request_interface $request, \phpbb\config\config $config, $forums_cat_status_table, $collapse_blocks_table)
 	{
 			$this->db = $db;
 			$this->template = $template;
@@ -71,7 +63,7 @@ class listener implements EventSubscriberInterface
 		}
 		$this->db->sql_freeresult($result);
 		$this->cat_status_ary = $cat_status_ary;
-		
+
 		$sql = 'SELECT * FROM ' . $this->collapse_blocks_table;
 		$result = $this->db->sql_query($sql);
 		$collapse_blocks_ary = array();
@@ -84,7 +76,7 @@ class listener implements EventSubscriberInterface
 		$this->collapse_blocks_ary = $collapse_blocks_ary;       
 
 		$this->user->add_lang_ext('alg/collapsecategories', 'collapsecategories');
-		
+
 		$this->collapsecategories_only_on_index = $this->config['collapsecategories_only_on_index'];
 		$lang_set_ext = $event['lang_set_ext'];
 		$style_id = $event['style_id'];
@@ -101,27 +93,26 @@ class listener implements EventSubscriberInterface
 	//       print_r('$categories_collapsebaled :1= ' . $categories_collapsebaled . '$pos =' . $pos . ' $style_ids = ' . $style_ids . 'style_id=' .$style_id);
 	//      print_r('***' .  (bool) $categories_collapsebaled . '***');
 	   if ($categories_collapsebaled && $this->collapsecategories_only_on_index)
-	//         if (true)   
-			
+	//         if (true)
+
 		{
-			
+
 			$f = $this->request->variable('f', 0);
 			$t = $this->request->variable('t', 0);
 			$p = $this->request->variable('p', 0);
 	//            print_r('f = ' . $f);
-			
+
 			$categories_collapsebaled = (bool) !$f && !$t && !$p;   //Inpex page or custom pages
 		}
 		$this->template->assign_vars(array(
 					'S_COLLAPSECATEGORIES_ONLY_ON_INDEX'	=> (bool)  $this->collapsecategories_only_on_index,
 					'S_STYLE_COLLAPSEBALED'	=> (bool) $this->is_style_collapsebaled,
-				   'S_CATEGORIES_COLLAPSEBALED'	=> (bool) $categories_collapsebaled,
-				   'S_ID_ARR'	=>  $this->config['collapsecategories_id_arr'],
-				   'S_CLASS_ARR'	=>  $this->config['collapsecategories_class_arr'],
-				   'S_COLLAPSE_BLOCKS'	=>  json_encode($collapse_blocks_ary),
-			
+					'S_CATEGORIES_COLLAPSEBALED'	=> (bool) $categories_collapsebaled,
+					'S_ID_ARR'	=>  $this->config['collapsecategories_id_arr'],
+					'S_CLASS_ARR'	=>  $this->config['collapsecategories_class_arr'],
+					'S_COLLAPSE_BLOCKS'	=>  json_encode($collapse_blocks_ary),
 
-			));  
+			));
 
 	}
 	public function display_forums_modify_template_vars($event)

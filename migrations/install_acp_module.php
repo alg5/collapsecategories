@@ -49,7 +49,7 @@ class install_acp_module extends \phpbb\db\migration\migration
 		//ADD to Config
 		//current version
 		array('config.add', array('collapsecategories', '2.0.0')),
-		array('config.add', array('collapsecategories_only_on_index', '1')),                   
+		array('config.add', array('collapsecategories_only_on_index', '1')),
 //                                        array('config.add', array('collapsecategories_id_arr', '')),
 //                                        array('config.add', array('collapsecategories_class_arr', '')),
 //                                        array('config.add', array('collapsecategories_style_ids', '')),
@@ -57,7 +57,7 @@ class install_acp_module extends \phpbb\db\migration\migration
 	}
 
 public function revert_data()
-	{
+{
 	return array(
 				// remove from configs
 				// Current version
