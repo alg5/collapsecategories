@@ -73,7 +73,7 @@ class listener implements EventSubscriberInterface
 				$collapse_blocks_ary[] = $row;
 		}
 		$this->db->sql_freeresult($result);
-		$this->collapse_blocks_ary = $collapse_blocks_ary;       
+		$this->collapse_blocks_ary = $collapse_blocks_ary;
 
 		$this->user->add_lang_ext('alg/collapsecategories', 'collapsecategories');
 
@@ -96,7 +96,6 @@ class listener implements EventSubscriberInterface
 	//         if (true)
 
 		{
-
 			$f = $this->request->variable('f', 0);
 			$t = $this->request->variable('t', 0);
 			$p = $this->request->variable('p', 0);
@@ -105,7 +104,7 @@ class listener implements EventSubscriberInterface
 			$categories_collapsebaled = (bool) !$f && !$t && !$p;   //Inpex page or custom pages
 		}
 		$this->template->assign_vars(array(
-					'S_COLLAPSECATEGORIES_ONLY_ON_INDEX'	=> (bool)  $this->collapsecategories_only_on_index,
+					'S_COLLAPSECATEGORIES_ONLY_ON_INDEX'	=> (bool) $this->collapsecategories_only_on_index,
 					'S_STYLE_COLLAPSEBALED'	=> (bool) $this->is_style_collapsebaled,
 					'S_CATEGORIES_COLLAPSEBALED'	=> (bool) $categories_collapsebaled,
 					'S_ID_ARR'	=>  $this->config['collapsecategories_id_arr'],
@@ -127,7 +126,7 @@ class listener implements EventSubscriberInterface
 					$row = $event['row'];
 					$forum_cat_status = 0;
 					$this->first_row++;
-					if($this->user->data['is_registered'] &&  ($this->first_row == 1 || $forum_row['S_IS_CAT'] || $forum_row['S_NO_CAT'] ))
+					if ($this->user->data['is_registered'] &&  ($this->first_row == 1 || $forum_row['S_IS_CAT'] || $forum_row['S_NO_CAT'] ))
 					{
 									$forum_cat_status =  $this->get_cat_status($forum_row['FORUM_ID']);
 					}
@@ -142,11 +141,11 @@ class listener implements EventSubscriberInterface
 //                    if (!$this->is_style_collapsebaled)
 //                    {
 //                        return;
-//                    }            
-                    $cat_row = $event['cat_row'];
+//                    }
+					$cat_row = $event['cat_row'];
 //                                        print_r('cat_id = ' . $cat_row['FORUM_ID']);
 					$forum_cat_status = 0;
-					if($this->user->data['is_registered'] &&  ( $cat_row['S_IS_CAT'] || $cat_row['S_NO_CAT'] ))
+					if ($this->user->data['is_registered'] &&  ( $cat_row['S_IS_CAT'] || $cat_row['S_NO_CAT'] ))
 					{
 							$forum_cat_status =  $this->get_cat_status($cat_row['FORUM_ID']);
 					}
