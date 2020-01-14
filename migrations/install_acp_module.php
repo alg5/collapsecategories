@@ -14,7 +14,7 @@ class install_acp_module extends \phpbb\db\migration\migration
 {
 	public function effectively_installed()
 	{
-                        return isset($this->config['collapsecategories']) && version_compare($this->config['collapsecategories'], '2.0.*', '>=');
+		return isset($this->config['collapsecategories']) && version_compare($this->config['collapsecategories'], '2.0.*', '>=');
 
 	}
 
@@ -26,7 +26,7 @@ class install_acp_module extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return array(
-                                        //ADD ACP module
+		//ADD ACP module
 			array('module.add', array(
 				'acp',
 				'ACP_CAT_DOT_MODS',
@@ -46,27 +46,27 @@ class install_acp_module extends \phpbb\db\migration\migration
 					'module_auth'		=> 'ext_alg/collapsecategories && acl_a_board',
 				),
 			)),
-                                        //ADD to Config
-                                        //current version
-                                        array('config.add', array('collapsecategories', '2.0.0')),
-                                        array('config.add', array('collapsecategories_only_on_index', '1')),                   
-//                                        array('config.add', array('collapsecategories_id_arr', '')),                   
-//                                        array('config.add', array('collapsecategories_class_arr', '')), 
-//                                        array('config.add', array('collapsecategories_style_ids', '')), 
+		//ADD to Config
+		//current version
+		array('config.add', array('collapsecategories', '2.0.0')),
+		array('config.add', array('collapsecategories_only_on_index', '1')),                   
+//                                        array('config.add', array('collapsecategories_id_arr', '')),
+//                                        array('config.add', array('collapsecategories_class_arr', '')),
+//                                        array('config.add', array('collapsecategories_style_ids', '')),
 		);
 	}
-        
- public function revert_data()
-    {
-            return array(
-                    // remove from configs
-                    // Current version
-                    array('config.remove', array('collapsecategories')),
-                    array('config.remove', array('collapsecategories_only_on_index')),
+
+public function revert_data()
+	{
+	return array(
+				// remove from configs
+				// Current version
+				array('config.remove', array('collapsecategories')),
+				array('config.remove', array('collapsecategories_only_on_index')),
 //                    array('config.remove', array('collapsecategories_id_arr')),
 //                    array('config.remove', array('collapsecategories_class_arr')),
 //                   array('config.remove', array('collapsecategories_style_ids')),
-                    // remove from ACP modules
+// remove from ACP modules
 			array('if', array(
 				array('module.exists', array('acp', 'ACP_COLLAPSECATEGORIES', array(
 					'module_basename'	=> '\alg\collapsecategories\acp\acp_collapsecategories_common_module',
@@ -100,7 +100,7 @@ class install_acp_module extends \phpbb\db\migration\migration
 				)),
 			)),
 			array('module.remove', array('acp', 'ACP_CAT_DOT_MODS', 'ACP_COLLAPSECATEGORIES')),
-                
-            );
-    }       
+
+		);
+	}
 }

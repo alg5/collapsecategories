@@ -1,11 +1,11 @@
 <?php
-/** 
+/**
 *
 * collapcecategories [Russian]
 *
 * @package collapcecategories
 * @copyright (c) 2014 alg
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License 
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
 
@@ -35,10 +35,10 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-    'ACP_COLLAPSECATEGORIES_SETTINGS'		=> 'Настройки',
-    'ACP_COLLAPSECATEGORIES'			=> 'Сворачивание категорий',
-    'ACP_COLLAPSECATEGORIES_SETTINGS_COMMON'	=> 'Общие настройки',
-    'ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX'		=> 'Сворачивание категорий только на главной странице',
-    'ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX_EXPLAIN'	=> 'Выберите сворачивание категорий только на главной странице или на любой странице форума',
+	'ACP_COLLAPSECATEGORIES_SETTINGS'		=> 'Настройки',
+	'ACP_COLLAPSECATEGORIES'			=> 'Сворачивание категорий',
+	'ACP_COLLAPSECATEGORIES_SETTINGS_COMMON'	=> 'Общие настройки',
+	'ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX'		=> 'Сворачивание категорий только на главной странице',
+	'ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX_EXPLAIN'	=> 'Выберите сворачивание категорий только на главной странице или на любой странице форума',
 
 ));
