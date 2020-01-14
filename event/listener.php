@@ -84,20 +84,16 @@ class listener implements EventSubscriberInterface
 		{
 			$style_id = $event['user_data']['user_style'];
 		}
-		//print_r('user_style = ' .  $event['user_data']['user_style']);
 		$style_ids = $this->config['collapsecategories_style_ids'];
 		$pos = strrpos($style_ids, $style_id);
 		$this->is_style_collapsebaled = ($pos !== false);
 
 		$categories_collapsebaled =  (bool) $this->is_style_collapsebaled;
-	//       print_r('$categories_collapsebaled :1= ' . $categories_collapsebaled . '$pos =' . $pos . ' $style_ids = ' . $style_ids . 'style_id=' .$style_id);
-	//      print_r('***' .  (bool) $categories_collapsebaled . '***');
 		if ($categories_collapsebaled && $this->collapsecategories_only_on_index)
 		{
 			$f = $this->request->variable('f', 0);
 			$t = $this->request->variable('t', 0);
 			$p = $this->request->variable('p', 0);
-	//            print_r('f = ' . $f);
 
 			$categories_collapsebaled = (bool) !$f && !$t && !$p;   //Inpex page or custom pages
 		}
