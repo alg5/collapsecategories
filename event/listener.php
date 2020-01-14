@@ -92,9 +92,7 @@ class listener implements EventSubscriberInterface
 		$categories_collapsebaled =  (bool) $this->is_style_collapsebaled;
 	//       print_r('$categories_collapsebaled :1= ' . $categories_collapsebaled . '$pos =' . $pos . ' $style_ids = ' . $style_ids . 'style_id=' .$style_id);
 	//      print_r('***' .  (bool) $categories_collapsebaled . '***');
-	   if ($categories_collapsebaled && $this->collapsecategories_only_on_index)
-	//         if (true)
-
+		if ($categories_collapsebaled && $this->collapsecategories_only_on_index)
 		{
 			$f = $this->request->variable('f', 0);
 			$t = $this->request->variable('t', 0);
