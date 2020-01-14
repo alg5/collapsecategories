@@ -1,0 +1,3 @@
+parameters:
+    tables.forums_cat_status: '%core.table_prefix%forums_cat_status'
+    tables.collapse_blocks: '%core.table_prefix%collapse_blocks'
