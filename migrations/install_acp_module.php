@@ -50,56 +50,58 @@ class install_acp_module extends \phpbb\db\migration\migration
 		//current version
 		array('config.add', array('collapsecategories', '2.0.0')),
 		array('config.add', array('collapsecategories_only_on_index', '1')),
-//                                        array('config.add', array('collapsecategories_id_arr', '')),
-//                                        array('config.add', array('collapsecategories_class_arr', '')),
-//                                        array('config.add', array('collapsecategories_style_ids', '')),
+		array('config.add', array('collapsecategories_save', '1')),
+		array('config.add', array('collapsecategories_id_arr', '')),
+		array('config.add', array('collapsecategories_class_arr', '')),
+		array('config.add', array('collapsecategories_style_ids', '')),
 		);
 	}
 
 public function revert_data()
 {
 	return array(
-				// remove from configs
-				// Current version
-				array('config.remove', array('collapsecategories')),
-				array('config.remove', array('collapsecategories_only_on_index')),
-//                    array('config.remove', array('collapsecategories_id_arr')),
-//                    array('config.remove', array('collapsecategories_class_arr')),
-//                   array('config.remove', array('collapsecategories_style_ids')),
-// remove from ACP modules
-			array('if', array(
-				array('module.exists', array('acp', 'ACP_COLLAPSECATEGORIES', array(
-					'module_basename'	=> '\alg\collapsecategories\acp\acp_collapsecategories_common_module',
-					'module_langname'	=> 'ACP_COLLAPSECATEGORIES_SETTINGS_COMMON',
-					'module_mode'		=> 'collapsecategories',
-					'module_auth'		=> 'ext_alg/collapsecategories && acl_a_board',
-					),
-				)),
-				array('module.remove', array('acp', 'ACP_COLLAPSECATEGORIES', array(
-					'module_basename'	=> '\alg\collapsecategories\acp\acp_collapsecategories_common_module',
-					'module_langname'	=> 'ACP_COLLAPSECATEGORIES_SETTINGS_COMMON',
-					'module_mode'		=> 'collapsecategories',
-					'module_auth'		=> 'ext_alg/collapsecategories && acl_a_board',
-					),
-				)),
+		// remove from configs
+		// Current version
+		array('config.remove', array('collapsecategories')),
+		array('config.remove', array('collapsecategories_only_on_index')),
+		array('config.remove', array('collapsecategories_save')),
+		array('config.remove', array('collapsecategories_id_arr')),
+		array('config.remove', array('collapsecategories_class_arr')),
+		array('config.remove', array('collapsecategories_style_ids')),
+		// remove from ACP modules
+		array('if', array(
+			array('module.exists', array('acp', 'ACP_COLLAPSECATEGORIES', array(
+				'module_basename'	=> '\alg\collapsecategories\acp\acp_collapsecategories_common_module',
+				'module_langname'	=> 'ACP_COLLAPSECATEGORIES_SETTINGS_COMMON',
+				'module_mode'		=> 'collapsecategories',
+				'module_auth'		=> 'ext_alg/collapsecategories && acl_a_board',
+				),
 			)),
-			array('if', array(
-				array('module.exists', array('acp', 'ACP_COLLAPSECATEGORIES', array(
-					'module_basename'	=> '\alg\collapsecategories\acp\acp_collapsecategories_blocks_module',
-					'module_langname'	=> 'ACP_COLLAPSECATEGORIES_SETTINGS_BLOCKS',
-					'module_mode'		=> 'collapsecategories',
-					'module_auth'		=> 'ext_alg/collapsecategories && acl_a_board',
-					),
-				)),
-				array('module.remove', array('acp', 'ACP_COLLAPSECATEGORIES', array(
-					'module_basename'	=> '\alg\collapsecategories\acp\acp_collapsecategories_blocks_module',
-					'module_langname'	=> 'ACP_COLLAPSECATEGORIES_SETTINGS_BLOCKS',
-					'module_mode'		=> 'collapsecategories',
-					'module_auth'		=> 'ext_alg/collapsecategories && acl_a_board',
-					),
-				)),
+			array('module.remove', array('acp', 'ACP_COLLAPSECATEGORIES', array(
+				'module_basename'	=> '\alg\collapsecategories\acp\acp_collapsecategories_common_module',
+				'module_langname'	=> 'ACP_COLLAPSECATEGORIES_SETTINGS_COMMON',
+				'module_mode'		=> 'collapsecategories',
+				'module_auth'		=> 'ext_alg/collapsecategories && acl_a_board',
+				),
 			)),
-			array('module.remove', array('acp', 'ACP_CAT_DOT_MODS', 'ACP_COLLAPSECATEGORIES')),
+		)),
+		array('if', array(
+			array('module.exists', array('acp', 'ACP_COLLAPSECATEGORIES', array(
+				'module_basename'	=> '\alg\collapsecategories\acp\acp_collapsecategories_blocks_module',
+				'module_langname'	=> 'ACP_COLLAPSECATEGORIES_SETTINGS_BLOCKS',
+				'module_mode'		=> 'collapsecategories',
+				'module_auth'		=> 'ext_alg/collapsecategories && acl_a_board',
+				),
+			)),
+			array('module.remove', array('acp', 'ACP_COLLAPSECATEGORIES', array(
+				'module_basename'	=> '\alg\collapsecategories\acp\acp_collapsecategories_blocks_module',
+				'module_langname'	=> 'ACP_COLLAPSECATEGORIES_SETTINGS_BLOCKS',
+				'module_mode'		=> 'collapsecategories',
+				'module_auth'		=> 'ext_alg/collapsecategories && acl_a_board',
+				),
+			)),
+		)),
+		array('module.remove', array('acp', 'ACP_CAT_DOT_MODS', 'ACP_COLLAPSECATEGORIES')),
 
 		);
 	}

@@ -28,25 +28,26 @@ class install_schema extends \phpbb\db\migration\migration
 		(
 			'add_tables' => array
 			(
-				$this->table_prefix . 'forums_cat_status' => array
+				$this->table_prefix . 'collapse_forums_cat_status' => array
 				(
 					'COLUMNS'		=> array
 					(
-							'forum_id'		=> array('UINT', 0),
-							'user_id'		=> array('UINT', 0),
+						'forum_id'		=>  array('VCHAR:60', ''),
+						'user_id'		=> array('UINT', 0),
 					),
 					'PRIMARY_KEY'	=> array('forum_id', 'user_id'),
 				),
-	//				),
-
 				$this->table_prefix . 'collapse_blocks' => array
 				(
 					'COLUMNS'		=> array
 					(
-							'block_id'		=>  array('VCHAR:60', ''),
-							'text_open'	=>  array('VCHAR:60', ''),
-							'text_close'	=>  array('VCHAR:60', ''),
-							'custom_css'	=>  array('VCHAR:60', ''),),
+						'block_id'		=>  array('VCHAR:60', ''),
+						'text_open'	=>  array('VCHAR:60', ''),
+						'text_close'	=>  array('VCHAR:60', ''),
+						'icon_open'	=>  array('TINT:1', 1),
+						'icon_close'	=>  array('TINT:1', 1),						
+						'custom_css'	=>  array('VCHAR:60', ''),
+					),
 					'PRIMARY_KEY'	=> array('block_id'),
 				),
 			 ),
@@ -55,11 +56,12 @@ class install_schema extends \phpbb\db\migration\migration
 
 	public function revert_schema()
 	{
-			return 	array(
-					'drop_tables'	=> array($this->table_prefix . 'forums_cat_status'),
-					'drop_tables'	=> array($this->table_prefix . 'collapse_blocks'),
-	//                    'drop_columns' => array($this->table_prefix . 'styles' => array('style_collapsible'),
-	//            ),
-			);
+		return array(
+			'drop_tables'		=> array(
+			$this->table_prefix . 'forums_cat_status',
+			$this->table_prefix . 'collapse_forums_cat_status',
+			$this->table_prefix . 'collapse_blocks',
+			),
+		);
 	}
 }

@@ -2,10 +2,9 @@
 
 <h1>{L_ACP_COLLAPSECATEGORIES}</h1>
 
-<p>{L_ACP_LAST_TOPICS_AJAX_EXPLAIN}<br />{L_ACP_LAST_TOPICS_COLUMNS_NUMBER_EXPLAIN}</p>
+<!--<p>{L_ACP_LAST_TOPICS_AJAX_EXPLAIN}<br />{L_ACP_LAST_TOPICS_COLUMNS_NUMBER_EXPLAIN}</p>-->
 
 <form id="acp_collapsecategories" method="post" action="{U_ACTION}">
-
     <div id="blockCollapsecategories">
         <fieldset>
             <legend>{L_ACP_COLLAPSECATEGORIES_SETTINGS_COMMON}</legend>
@@ -14,19 +13,25 @@
                     <label for="collapsecategories_only_on_index">{L_ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX}{L_COLON}</label><br /> 
                     <span>{L_ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX_EXPLAIN}</span>
                 </dt>
-                    <dd><label><input type="radio" name="collapsecategories_only_on_index" value="1" <!-- IF S_SHOW_ONLY_ON_INDEX -->checked<!-- ENDIF --> class="radio" /> {L_YES}</label><label><input type="radio" name="collapsecategories_only_on_index" value="0" <!-- IF !S_SHOW_ONLY_ON_INDEX -->checked<!-- ENDIF --> class="radio"> {L_NO}</label></dd>
+                    <dd><label><input type="radio" name="collapsecategories_only_on_index" value="1" <!-- IF S_COLLAPSE__ON_INDEX_ONLY -->checked<!-- ENDIF --> class="radio" /> {L_YES}</label><label><input type="radio" name="collapsecategories_only_on_index" value="0" <!-- IF !S_COLLAPSE__ON_INDEX_ONLY -->checked<!-- ENDIF --> class="radio"> {L_NO}</label></dd>
             </dl>
+           <dl>
+                <dt>
+                    <label for="collapsecategories_save">{L_ACP_COLLAPSECATEGORIES_SAVE}{L_COLON}</label><br /> 
+                    <span>{L_ACP_COLLAPSECATEGORIES_SAVE_EXPLAIN}</span>
+                </dt>
+                    <dd><label><input type="radio" name="collapsecategories_save" value="1" <!-- IF S_SHOW_SAVE -->checked<!-- ENDIF --> class="radio" /> {L_YES}</label><label><input type="radio" name="collapsecategories_save" value="0" <!-- IF !S_SHOW_SAVE -->checked<!-- ENDIF --> class="radio"> {L_NO}</label></dd>
+            </dl>			
        </fieldset>
         <fieldset>
             <legend>{L_ACP_COLLAPSECATEGORIES_SETTINGS_STYLES}</legend>
             <table class="table1 styles" style="width:60%;">
                 <thead>
                     <tr>
-                            <th>{L_STYLE_NAME}</th>
-                            <th  style="white-space: nowrap; text-align: center;">{L_ACP_COLLAPSECATEGORIES_STYLE_COLLAPSIBLE}</th>
+                        <th>{L_STYLE_NAME}</th>
+                        <th  style="white-space: nowrap; text-align: center;">{L_ACP_COLLAPSECATEGORIES_STYLE_COLLAPSIBLE}</th>
                     </tr>
                 </thead>
-                
                 <tbody id="styles-list">
                     <!-- BEGIN styles_list -->
                     <tr>
@@ -39,19 +44,14 @@
                     </tr>
                     <!-- END styles_list -->
                 </tbody>
-                
-                 
             </table>
- 
         </fieldset>
         <fieldset class="submit-buttons">
 	        <legend>{L_SUBMIT}</legend>
             <div id="loader_save"></div>
             <button class="lp-send" type="submit" name="btnSend"  id="btnSend"><i class="fa fa-upload"></i> {L_EXPORT_STORE}</button>
-
         </fieldset>   
     </div>
-
 </form>
 
 <!-- INCLUDE overall_footer.html -->

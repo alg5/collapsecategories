@@ -36,10 +36,12 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'ACP_COLLAPSECATEGORIES_SETTINGS'		=> 'Настройки',
-	'ACP_COLLAPSECATEGORIES'			=> 'Вы можете добавлять/менять/удалять сворачиваемые блоки. <br />Блок обязательно  должен иметь уникальный ID',
-	'ACP_COLLAPSECATEGORIES_BLOCKS_EXPLAIN'		=> 'Сворачивание категорий',
+	'ACP_COLLAPSECATEGORIES'			=> 'Сворачивание категорий',
+	'ACP_COLLAPSECATEGORIES_BLOCKS_EXPLAIN'			=> 'Вы можете добавлять/менять/удалять сворачиваемые блоки. <br />Блок обязательно  должен иметь уникальный ID',
 	'ACP_COLLAPSECATEGORIES_SETTINGS_COMMON'	=> 'Общие настройки',
 	'ACP_COLLAPSECATEGORIES_SETTINGS_BLOCKS'	=> 'Настройки сворачиваемых блоков',
+	'ACP_COLLAPSECATEGORIES_SAVE'	=> 'Сохранение статуса сворачиваемых блоков в базе данных форума',
+	'ACP_COLLAPSECATEGORIES_SAVE_EXPLAIN'	=> 'Вы можете сохранять статусы сворачиваемых блоков в таблице в базе или в локальной памяти компьютера<br />(для гостей статусы запоминаются только в локальной памяти компьютера)',
 
 	'ACP_COLLAPSECATEGORIES_SETTINGS_STYLES'		=>  'Настройка стилей',
 	'ACP_COLLAPSECATEGORIES_SETTINGS_BLOCKS'		=>  'Настройка сворачиваемых блоков',
@@ -56,6 +58,9 @@ $lang = array_merge($lang, array(
 	'ACP_COLLAPSECATEGORIES_BLOCK_ID_CAPTION'		=> 'ID',
 	'ACP_COLLAPSECATEGORIES_TEXT_OPEN_CAPTION'		 => 'Текст для развернутого блока',
 	'ACP_COLLAPSECATEGORIES_TEXT_CLOSE_CAPTION'		 => 'Текст для свёрнутого блока',
+	'ACP_COLLAPSECATEGORIES_ICON_OPEN_CAPTION'		 => 'Иконка для развернутого блока',
+	'ACP_COLLAPSECATEGORIES_ICON'		 => 'Иконка',
+	'ACP_COLLAPSECATEGORIES_ICON_CLOSE_CAPTION'		 => 'Иконка для свёрнутого блока',
 	'ACP_COLLAPSECATEGORIES_CUSTOM_CSS_CAPTION'		=> 'Кастомный класс',
 	'ACP_COLLAPSECATEGORIES_BLOCK_ID_CAPTION_EXPLAIN'		=> 'ID сворачиваемого блока',
 	'ACP_COLLAPSECATEGORIES_TEXT_OPEN_CAPTION_EXPLAIN'		=> 'Текст для развернутого блока',

@@ -5,9 +5,7 @@
 <p>{L_ACP_COLLAPSECATEGORIES_BLOCKS_EXPLAIN}</p>
 
 <form id="acp_collapsecategories" method="post" action="{U_ACTION}">
-
     <div id="blockCollapsecategories">
-
         <fieldset>
             <legend>{L_ACP_COLLAPSECATEGORIES_SETTINGS_BLOCKS}</legend>
             <div class="panel">
@@ -23,18 +21,29 @@
                         <tr>
                             <th style="">{L_ACP_COLLAPSECATEGORIES_BLOCK_ID_CAPTION}</th>
                             <th style="">{L_ACP_COLLAPSECATEGORIES_TEXT_OPEN_CAPTION}</th>
+				            <th style="">{L_ACP_COLLAPSECATEGORIES_ICON}<i class="fa fa-chevron-down"></i></th>
                             <th style="">{L_ACP_COLLAPSECATEGORIES_TEXT_CLOSE_CAPTION}</th>
-                            <th style="">{L_ACP_COLLAPSECATEGORIES_CUSTOM_CSS_CAPTION}</th>
+                            <th style="">{L_ACP_COLLAPSECATEGORIES_ICON}<i class="fa fa-chevron-up"></i></th>
+				            <th style="">{L_ACP_COLLAPSECATEGORIES_CUSTOM_CSS_CAPTION}</th>
                             <th  style="width:90px;">{L_ACTION}</th>
                         </tr>
                     </thead>
                     <tbody >
                         <!-- BEGIN clpsblocks -->
-      
                             <tr>
                                 <td><div  class="row_data" col_name="block_id">{clpsblocks.BLOCK_ID}</div></td>
                                 <td><div class="row_data" edit_type="click" col_name="text_open">{clpsblocks.TEXT_OPEN}</div></td>
+                                <td>
+                                    <div class="row_data" edit_type="click" col_name="icon_open">
+                                        <input type="checkbox" name="icon-open"<!-- IF clpsblocks.ICON_OPEN eq 1 -->checked<!-- ENDIF --> class="radio" disabled />
+                                    </div>
+                                </td>
                                 <td><div class="row_data" edit_type="click" col_name="text_close">{clpsblocks.TEXT_CLOSE}</div></td>
+                                <td>
+                                    <div class="row_data" edit_type="click" col_name="icon_close">
+                                        <input type="checkbox" name="icon-close" value="1" <!-- IF clpsblocks.ICON_CLOSE eq 1 -->checked<!-- ENDIF --> class="radio" disabled />
+                                    </div>
+                                </td>
                                 <td><div class="row_data" edit_type="click" col_name="custom_css">{clpsblocks.CUSTOM_CSS}</div></td>
                               
                                 <td  style="width:65px;" align="center"> 
@@ -42,7 +51,7 @@
                                      <div class="clps-action clps-action-delete"  data-block_id="{clpsblocks.BLOCK_ID}" title="{L_ACP_COLLAPSECATEGORIES_BTN_DELETE}"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
                                      <span class="btn_save" style="display:none;" data-block_id="{clpsblocks.BLOCK_ID}"  title="{L_ACP_COLLAPSECATEGORIES_BTN_SAVE}"> <a href="#" class="btn btn-link"  data-block_id="{clpsblocks.BLOCK_ID}"> Save</a> | </span>
                                     <span class="btn_cancel" style="display:none;" data-block_id="{clpsblocks.BLOCK_ID}"  title="{L_ACP_COLLAPSECATEGORIES_BTN_CANCEL}"> <a href="#" class="btn btn-link" data-block_id="{clpsblocks.BLOCK_ID}"> Cancel</a> | </span>
-
+                                    <!-- <div class="loader_small" style="" data-block_id="{clpsblocks.BLOCK_ID}"  title=""></div> -->
                                 <td>
                             </tr>
                         <!-- END clpsblocks -->
@@ -50,7 +59,17 @@
                             <tr class="clps-hide">
                                 <td><div  class="row_data" col_name="block_id">bla-bla</div></td>
                                 <td><div class="row_data" edit_type="click" col_name="text_open">bla-bla</div></td>
+                                <td>
+                                    <div class="row_data" edit_type="click" col_name="icon_open">
+                                        <input type="checkbox" name="icon-open" checked class="radio" />
+                                    </div>
+                                </td>
                                 <td><div class="row_data" edit_type="click" col_name="text_close">bla-bla</div></td>
+                                <td>
+                                    <div class="row_data" edit_type="click" col_name="icon_close">
+                                        <input type="checkbox" name="icon-close" checked class="radio" />
+                                    </div>
+                                </td>                    
                                 <td><div class="row_data" edit_type="click" col_name="custom_css">bla-bla</div></td>
                                 <td  style="width:65px;" align="center"> 
                                     <div class="clps-action clps-action-edit"     data-block_id="bla-bla" title="{L_ACP_COLLAPSECATEGORIES_BTN_EDIT}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
@@ -61,10 +80,10 @@
                             </tr>
                     </tbody>
                 </table>
+		        <div class="loader_small"></div>
     
             <button class="clps-add-block"  id="btnAddNewBlock"><i class="fa fa-plus-square-o" aria-hidden="true"></i> {L_ACP_COLLAPSECATEGORIES_ADD_NEW_BLOCK}</button>
-<!--                    <label for="newBlock_id>New Id</label>-->
-             <div id="newBlock" style="display:none;">     
+            <div id="newBlock" style="display:none;">     
                  <fieldset>
                     <legend>{L_ACP_COLLAPSECATEGORIES_ADD_NEW_BLOCK}</legend>
                     <dl>
@@ -80,15 +99,22 @@
 <!--                            <br /> 
                             <span>{L_ACP_COLLAPSECATEGORIES_TEXT_OPEN_CAPTION_EXPLAIN}</span>-->
                         </dt>
-                        <dd><input type="text" id="text_open" name="text_open"  value="{L_ACP_COLLAPSECATEGORIES_TEXT_OPEN_DEFAULT}" /> </dd>
-                    </dl>                    
+                        <dd>
+                            <input type="text" id="text_open" name="text_open"  value="{L_ACP_COLLAPSECATEGORIES_TEXT_OPEN_DEFAULT}" />
+                            &nbsp;&nbsp;{L_ACP_COLLAPSECATEGORIES_ICON}<i class="fa fa-chevron-up"></i> <input type="checkbox" id="icon_open" name="icon_open"  checked /> 
+                        </dd>
+                    </dl> 
+      
                     <dl>
                         <dt>
                             <label for="text_close">{L_ACP_COLLAPSECATEGORIES_TEXT_CLOSE_CAPTION}{L_COLON}</label>
 <!--                            <br /> 
                             <span>{L_ACP_COLLAPSECATEGORIES_TEXT_CLOSE_CAPTION_EXPLAIN}</span>-->
                         </dt>
-                        <dd><input type="text" id="text_close" name="text_close" value="{L_ACP_COLLAPSECATEGORIES_TEXT_CLOSE_DEFAULT}"  /> </dd>
+                        <dd>
+                            <input type="text" id="text_close" name="text_close" value="{L_ACP_COLLAPSECATEGORIES_TEXT_CLOSE_DEFAULT}"  /> 
+                            &nbsp;&nbsp;{L_ACP_COLLAPSECATEGORIES_ICON}<i class="fa fa-chevron-down"></i> <input type="checkbox" id="icon_close" name="icon_close"  checked /> 
+                        </dd>
                     </dl>
                     <dl>
                         <dt>
@@ -98,23 +124,15 @@
                         </dt>
                         <dd><input type="text" id="custom_css" name="custom_css"   /> </dd>
                     </dl>                    
-                    
                  </fieldset>
-        <fieldset class="submit-buttons">
-	        <legend>{L_SUBMIT}</legend>
-            <div id="loader_save"></div>
-            <button class="lp-send" type="submit" name="btnSaveNewBlock"  id="btnSaveNewBlock"><i class="fa fa-upload"></i> {L_EXPORT_STORE}</button>
-
-        </fieldset>   
-                </div>
-                
-                </div>
-
+                <fieldset class="submit-buttons">
+                    <legend>{L_SUBMIT}</legend>
+                    <div id="loader_save"></div>
+                    <button class="lp-send" type="submit" name="btnSaveNewBlock"  id="btnSaveNewBlock"><i class="fa fa-upload"></i> {L_EXPORT_STORE}</button>
+                </fieldset>   
+            </div>
         </fieldset>
-
- 
-    </div>
-
+   </div>
 </form>
 
 <!-- INCLUDE overall_footer.html -->
