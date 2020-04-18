@@ -108,7 +108,7 @@ class collapsecategories_handler
 			'TEXT_OPEN'		=> $text_open ,
 			'TEXT_CLOSE'		=> $text_close ,
 			'ICON_OPEN'		=> $icon_open ,
-			'ICON_CLOSE'		=> $icon_close ,			
+			'ICON_CLOSE'		=> $icon_close ,
 			'CUSTOM_CSS'		=> $custom_css ,
 		);
 		$json_response = new \phpbb\json_response;
@@ -138,7 +138,7 @@ class collapsecategories_handler
 			'TEXT_OPEN'		=> $text_open ,
 			'TEXT_CLOSE'		=> $text_close ,
 			'ICON_OPEN'		=> $icon_open ,
-			'ICON_CLOSE'		=> $icon_close ,			
+			'ICON_CLOSE'		=> $icon_close ,
 			'CUSTOM_CSS'		=> $custom_css ,
 		);
 		$json_response = new \phpbb\json_response;
@@ -154,7 +154,7 @@ class collapsecategories_handler
 
 		$collapsecategories_save = $this->request->variable('collapsecategories_save', 1);
 		$this->config->set('collapsecategories_save', $collapsecategories_save);
-		
+
 		$collapsecategories_id_arr = $this->request->variable('collapsecategories_id_arr', '');
 		//TODO check to valid string
 		$this->config->set('collapsecategories_id_arr', $collapsecategories_id_arr);
@@ -164,7 +164,7 @@ class collapsecategories_handler
 		$this->config->set('collapsecategories_class_arr', $collapsecategories_class_arr);
 
 		//STYLES
-		$collapsecategories_style_ids =  request_var('ids', array('', ''));
+		$collapsecategories_style_ids =  $this->request->variable('ids', array('', ''));
 		$collapsecategories_style_ids = implode(",", $collapsecategories_style_ids);
 		$this->config->set('collapsecategories_style_ids', $collapsecategories_style_ids);
 		$this->return = array(
