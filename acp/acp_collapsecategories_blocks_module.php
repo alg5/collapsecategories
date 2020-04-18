@@ -39,7 +39,7 @@ class acp_collapsecategories_blocks_module
 					'TEXT_OPEN'		=> $row['text_open'],
 					'TEXT_CLOSE'	=> $row['text_close'],
 					'ICON_OPEN'		=> $row['icon_open'],
-					'ICON_CLOSE'	=> $row['icon_close'],					
+					'ICON_CLOSE'	=> $row['icon_close'],
 					'CUSTOM_CSS'	=> $row['custom_css'],
 
 			));

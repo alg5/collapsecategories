@@ -53,7 +53,6 @@ class listener implements EventSubscriberInterface
 			$sql = 'SELECT * FROM ' . $this->collapse_forums_cat_status_table .
 					' WHERE  user_id=' . $this->user->data['user_id'];
 			$result = $this->db->sql_query($sql);
-
 			$cat_status_ary = array();
 			while ($row = $this->db->sql_fetchrow($result))
 			{
@@ -63,7 +62,6 @@ class listener implements EventSubscriberInterface
 			$this->db->sql_freeresult($result);
 			$this->cat_status_ary = $cat_status_ary;
 			$this->closed_ids = $closed_ids;
-			
 		}
 		$sql = 'SELECT * FROM ' . $this->collapse_blocks_table;
 //			print_r($closed_ids );
@@ -75,7 +73,7 @@ class listener implements EventSubscriberInterface
 				$collapse_blocks_ary[] = $row;
 		}
 		$this->db->sql_freeresult($result);
-		$this->collapse_blocks_ary = $collapse_blocks_ary;		
+		$this->collapse_blocks_ary = $collapse_blocks_ary;
 		$this->user->add_lang_ext('alg/collapsecategories', 'collapsecategories');
 
 		$this->collapsecategories_only_on_index = $this->config['collapsecategories_only_on_index'];

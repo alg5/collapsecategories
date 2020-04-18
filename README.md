@@ -9,3 +9,6 @@ Go to "ACP" > "Customise" > "Extensions" and enable the "Collapse Categories" ex
 ## License
 
 [GPLv2](license.txt)
+======================
+[![Build Status](https://travis-ci.org/alg5/collapsecategories.svg?branch=dev_3.2.x)](https://travis-ci.org/alg5/collapsecategories)
+

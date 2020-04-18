@@ -45,7 +45,7 @@ class install_schema extends \phpbb\db\migration\migration
 						'text_open'	=>  array('VCHAR:60', ''),
 						'text_close'	=>  array('VCHAR:60', ''),
 						'icon_open'	=>  array('TINT:1', 1),
-						'icon_close'	=>  array('TINT:1', 1),						
+						'icon_close'	=>  array('TINT:1', 1),
 						'custom_css'	=>  array('VCHAR:60', ''),
 					),
 					'PRIMARY_KEY'	=> array('block_id'),
