@@ -25,6 +25,8 @@
 			closedArray = closedArray.split(",");
 			closedArray = $.unique( closedArray );
 		}
+		else
+			closedArray = [];
 	}
 	$.each(closedArray, function( index, item ) {
 		if(isNaN(item))
@@ -37,7 +39,6 @@
 		}
 
 	});
-
 		//set status for category blocks
 		var cat_arr = $('[id^="cat"]');
 //		console.log(cat_arr);
