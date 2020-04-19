@@ -10,12 +10,9 @@
   
 	if (S_CATEGORIES_COLLAPSEBALED)
 	{
-		// console.log(closedArray);
-
 	var topiclist = $(".topiclist").filter(function(index){
 		return $(this).parents('div.forabg').prev().hasAttr('data-status');
 	});
-//	console.log(topiclist);
 	var active      = "collapseactive";
 	var inactive    = "collapseinactive";	
 	$(topiclist).each(function () {
@@ -40,32 +37,29 @@
 	var collapsethis = $(".collapsethis").filter(function(index){
 		return $(this).parents('div.forabg').prev().hasAttr('data-status');
 	});
-	// console.log(collapsethis);
-	$(collapsethis).each(function () 
+	$(collapsethis).each(function (index, item) 
 	{
 		var post_block = $(this).parents('div.forabg').prev();
-		var forum_id = $(post_block).attr('id').replace(/cat/g, '');
 		var cat_status = parseInt ( $(post_block).attr('data-status'));
 		var isCat = parseInt ( $(post_block).attr('data-category')) == 1;
-		if (cat_status >0)
+		if (cat_status > 0)
 		{
-			var collapse_block = $(this).parents('div.forabg').find('.collapsethis');
-			var unread = $(collapse_block).find('dl').filter(function(index){
-				return $(this).hasClass('forum_unread') ||$(this).hasClass('forum_unread_subforum')
-				|| $(this).hasClass('topic_unread');
-			});
-			if (unread.length >0)
+			var hasUnread = $(item).find('dl').hasClass('forum_unread')
+			||  $(item).find('dl').hasClass('forum_unread_subforum')
+			||  $(item).find('dl').hasClass('topic_unread')
+			||  $(item).find('a').hasClass('unread');
+
+			if (hasUnread)
 			{
-				var cat = $(this).parents('div.forabg').find('.header').find('a');
+				// var cat = $(this).parents('div.forabg').find('.header').find('a');
+				var cat = $(this).parents('div.forabg').find('.header');	
 				$( "<div class='collapse-unread_post' title='" + COLLAPSE_CATEGORIES_UNREAD_POST + "'></div>" ).insertBefore(cat );
 			}
-			$(collapse_block).attr('aria-hidden', 'true').hide();
+			$(item).attr('aria-hidden', 'true').hide();
 		}
-    });
-    // var active      = "collapseactive";
-    // var inactive    = "collapseinactive";
+	});
+	
    	$('.collapsetrigger').click(function () {
-
 		var status;
 		var blockInfo;
         var post_block = $(this).parents('div.forabg').prev();
@@ -73,7 +67,6 @@
 		var custom_block_id = forum_id.replace(/clps_/g, '');
 		var user_id = $(post_block).attr('data-user_id');
 		var parent = $("#" + forum_id);
-//	var user_id =S_USER_ID;
 		var unread_div = $(this).parents('div.forabg').find('.collapse-unread_post');
 		var isCat = parseInt ( $(post_block).attr('data-category')) == 1;
 		var block_id = isCat ? forum_id : custom_block_id;
@@ -81,22 +74,20 @@
 		{
 			blockInfo = $(collapse_blocks_arr).filter(function(index, item){
 				return item.block_id.trim() == custom_block_id;
-			//console.log(this);
 			});
 			blockInfo = $(blockInfo).first()[0];
-			// console.log(blockInfo);
 		}
-//	console.log(unread_div);
 		if ($(this).next().attr('aria-hidden') == "false") 
 		{
 			var collapse_block = $(this).parents('div.forabg').find('.collapsethis');
-			var unread = $(collapse_block).find('dl').filter(function(index){
-				return $(this).hasClass('forum_unread') ||$(this).hasClass('forum_unread_subforum')
-				|| $(this).hasClass('topic_unread');
-				});
-			if (unread.length >0)
+			var hasUnread = $(collapse_block).find('dl').hasClass('forum_unread')
+			||  $(collapse_block).find('dl').hasClass('forum_unread_subforum')
+			||  $(collapse_block).find('dl').hasClass('topic_unread')
+			||  $(collapse_block).find('a').hasClass('unread');			
+			if (hasUnread)
 			{
-				var cat = $(this).parents('div.forabg').find('.header').find('a');
+				// var cat = $(this).parents('div.forabg').find('.header').find('a');
+				var cat = $(this).parents('div.forabg').find('.header');
 				$( "<var isCat = parseInt ( $(post_block).attr('data-category')) == 1;div class='collapse-unread_post' title='" + COLLAPSE_CATEGORIES_UNREAD_POST + "'></div>" ).insertBefore(cat );
 			}
 
@@ -160,8 +151,6 @@
 			}
 		}
 		$(parent).attr('data-status', status);
-//		console.log("1:S_COLLAPSECATEGORIES_SAVE_DB =" + S_COLLAPSECATEGORIES_SAVE_DB);
- 
 		if (S_COLLAPSECATEGORIES_SAVE_DB == 1)
 		{
 			var path = './app.php/collapsecategories/' + block_id + '/' + status + '/' +  S_USER_ID;
@@ -182,9 +171,6 @@
 }/*if (S_CATEGORIES_COLLAPSEBALED)*/
 
 $('.collapsetrigger-custom').click(function () {
-//alert('6')
-	// console.log(this);
-	// console.log($(this).next());
 	var block_id = $(this).attr('id');
     var id = block_id.replace('clps_', '' );
 	var icon_id = 'icon_' + id;
@@ -205,7 +191,6 @@ $('.collapsetrigger-custom').click(function () {
         new_status = 1;
         txt_toggle = blockInfo.text_close ;
         icon_class = "fa-chevron-down";
-		// $("#" + id).hide();
 		$(this).next().hide();
 		closedArray.push(id);      
         
@@ -216,7 +201,6 @@ $('.collapsetrigger-custom').click(function () {
         new_status = 0;
         txt_toggle = blockInfo.text_open;
         icon_class = "fa-chevron-up";
-		// $("#" + id).show();
 		$(this).next().show();
 		closedArray = $.grep(closedArray, function(value) {
 			return value != id;
