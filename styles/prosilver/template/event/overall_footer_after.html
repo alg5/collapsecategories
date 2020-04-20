@@ -59,7 +59,7 @@
 //		console.log(collapse_blocks_arr);
 		$.each(collapse_blocks_arr, function( index, item ) 
 		{
-			//	console.log(item);
+				console.log(item);
 			var block_status;
 			var id = item.block_id.trim();
 			var parentId = 'clps_' + id;
@@ -94,7 +94,7 @@
 				$("#"+ id).attr('data-user_id', S_USER_ID);
 				$("#"+ id).attr('data-status', block_status);		 
 				$("#"+ id).attr('data-category', 0);	
-				var divParent = '<div id="' +  parentId + '" class="collapsetrigger-custom"  data-status="' + block_status  + '" >';
+				var divParent = '<div id="' +  parentId + '" class="collapsetrigger-custom ' + item.custom_css +  '" data-status="' + block_status  + '" >';
 				divParent += '<span><i id="icon_' + id + '" class="' + icon_class + '" aria-hidden="false"></i></span>';
 				divParent += '<span id="text_' + id + '" class="custom-text">'  + txt_toggle + '</span></div>';
 //				  console.log("divParent = " + divParent);
