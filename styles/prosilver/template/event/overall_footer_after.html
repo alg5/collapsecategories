@@ -1,12 +1,13 @@
-<script type="text/javascript">
-	var COLLAPSE_CATEGORIES_UNREAD_POST = '{L_COLLAPSE_CATEGORIES_UNREAD_POST}';
-	var S_CATEGORIES_COLLAPSEBALED = '{S_CATEGORIES_COLLAPSEBALED}';
-	var S_COLLAPSE_BLOCKS = '{S_COLLAPSE_BLOCKS}'; 
-	var S_CLOSED = '{S_CLOSED}'; 
-	var S_CLOSED_IDS = '{S_CLOSED_IDS}'; 
+{% if S_CATEGORIES_COLLAPSEBALED %}
+    <script type="text/javascript">
+	var COLLAPSE_CATEGORIES_UNREAD_POST = '{{ lang("COLLAPSE_CATEGORIES_UNREAD_POST") }}';
+	var S_CATEGORIES_COLLAPSEBALED = '{{ S_CATEGORIES_COLLAPSEBALED }}';
+	var S_COLLAPSE_BLOCKS = '{{ S_COLLAPSE_BLOCKS }}'; 
+	var S_CLOSED = '{{ S_CLOSED }}'; 
+	var S_CLOSED_IDS = '{{ S_CLOSED_IDS  }}'; 
 	
-	var S_COLLAPSECATEGORIES_SAVE_DB  = '{S_COLLAPSECATEGORIES_SAVE_DB}'; 
-	var S_USER_ID = '{S_USER_ID}'; 
+	var S_COLLAPSECATEGORIES_SAVE_DB  = '{{ S_COLLAPSECATEGORIES_SAVE_DB }}'; 
+	var S_USER_ID = '{{ S_USER_ID }}'; 
 	
 	var catClosedArray= [];
 	var blockClosedArray = [];
@@ -59,7 +60,7 @@
 //		console.log(collapse_blocks_arr);
 		$.each(collapse_blocks_arr, function( index, item ) 
 		{
-				console.log(item);
+//				console.log(item);
 			var block_status;
 			var id = item.block_id.trim();
 			var parentId = 'clps_' + id;
@@ -103,5 +104,6 @@
  		});		
 </script>
 {% INCLUDEJS '@alg_collapsecategories/collapsecategories.js' %}
+{% endif %}
 
 

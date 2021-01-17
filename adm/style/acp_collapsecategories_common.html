@@ -1,57 +1,56 @@
-<!-- INCLUDE overall_header.html -->
+{% include 'overall_header.html' %}
 
-<h1>{L_ACP_COLLAPSECATEGORIES}</h1>
+<h1>{{ lang("ACP_COLLAPSECATEGORIES") }}</h1>
 
-<!--<p>{L_ACP_LAST_TOPICS_AJAX_EXPLAIN}<br />{L_ACP_LAST_TOPICS_COLUMNS_NUMBER_EXPLAIN}</p>-->
-
-<form id="acp_collapsecategories" method="post" action="{U_ACTION}">
+<form id="acp_collapsecategories" method="post" action="{{ U_ACTION }}">
     <div id="blockCollapsecategories">
         <fieldset>
-            <legend>{L_ACP_COLLAPSECATEGORIES_SETTINGS_COMMON}</legend>
+            <legend>{{ lang("ACP_COLLAPSECATEGORIES_SETTINGS_COMMON") }}</legend>
             <dl>
                 <dt>
-                    <label for="collapsecategories_only_on_index">{L_ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX}{L_COLON}</label><br /> 
-                    <span>{L_ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX_EXPLAIN}</span>
+                    <label for="collapsecategories_only_on_index">{{ lang("ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX") }}{{ lang("COLON") }}</label><br /> 
+                    <span>{{ lang("ACP_COLLAPSECATEGORIES_ONLY_ON_INDEX_EXPLAIN") }}</span>
                 </dt>
-                    <dd><label><input type="radio" name="collapsecategories_only_on_index" value="1" <!-- IF S_COLLAPSE__ON_INDEX_ONLY -->checked<!-- ENDIF --> class="radio" /> {L_YES}</label><label><input type="radio" name="collapsecategories_only_on_index" value="0" <!-- IF !S_COLLAPSE__ON_INDEX_ONLY -->checked<!-- ENDIF --> class="radio"> {L_NO}</label></dd>
+                    <dd><label><input type="radio" name="collapsecategories_only_on_index" value="1" {% if S_COLLAPSE__ON_INDEX_ONLY %}checked{% endif %} class="radio" /> {{ lang("YES") }}</label><label><input type="radio" name="collapsecategories_only_on_index" value="0" {% if !S_COLLAPSE__ON_INDEX_ONLY %}checked{% endif %} class="radio"> {{ lang("NO") }}</label></dd>
             </dl>
            <dl>
                 <dt>
-                    <label for="collapsecategories_save">{L_ACP_COLLAPSECATEGORIES_SAVE}{L_COLON}</label><br /> 
-                    <span>{L_ACP_COLLAPSECATEGORIES_SAVE_EXPLAIN}</span>
+                    <label for="collapsecategories_save">{{ lang("ACP_COLLAPSECATEGORIES_SAVE") }}{{ lang("COLON") }}</label><br /> 
+                    <span>{{ lang("ACP_COLLAPSECATEGORIES_SAVE_EXPLAIN") }}</span>
                 </dt>
-                    <dd><label><input type="radio" name="collapsecategories_save" value="1" <!-- IF S_SHOW_SAVE -->checked<!-- ENDIF --> class="radio" /> {L_YES}</label><label><input type="radio" name="collapsecategories_save" value="0" <!-- IF !S_SHOW_SAVE -->checked<!-- ENDIF --> class="radio"> {L_NO}</label></dd>
+                    <dd><label><input type="radio" name="collapsecategories_save" value="1" {% if  S_SHOW_SAVE %}checked{% endif %} class="radio" /> {{ lang("YES") }}</label><label><input type="radio" name="collapsecategories_save" value="0" {% if  !S_SHOW_SAVE %}checked{% endif %} class="radio"> {{ lang("NO") }}</label></dd>
             </dl>			
        </fieldset>
         <fieldset>
-            <legend>{L_ACP_COLLAPSECATEGORIES_SETTINGS_STYLES}</legend>
+            <legend>{{ lang("ACP_COLLAPSECATEGORIES_SETTINGS_STYLES") }}</legend>
             <table class="table1 styles" style="width:60%;">
                 <thead>
                     <tr>
-                        <th>{L_STYLE_NAME}</th>
-                        <th  style="white-space: nowrap; text-align: center;">{L_ACP_COLLAPSECATEGORIES_STYLE_COLLAPSIBLE}</th>
+                        <th>{{ lang("STYLE_NAME") }}</th>
+                        <th  style="white-space: nowrap; text-align: center;">{{ lang("ACP_COLLAPSECATEGORIES_STYLE_COLLAPSIBLE") }}</th>
                     </tr>
                 </thead>
                 <tbody id="styles-list">
-                    <!-- BEGIN styles_list -->
-                    <tr>
-                        <td>{styles_list.NAME}</td>
-                        <td>
-                            <div style="text-align: center;">
-                                <input type="checkbox"  name ="ids[]" value="{styles_list.ID}" <!-- IF styles_list.IS_COLLAPSIBLE -->checked<!-- ENDIF --> />
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- END styles_list -->
+                    {% if styles_list %}
+                        {% for stl in styles_list %}
+                            <tr>
+                                <td>{stl.NAME}</td>
+                                <td>
+                                    <div style="text-align: center;">
+                                        <input type="checkbox"  name ="ids[]" value="{stl.ID}" {% if stl.IS_COLLAPSIBLE %}checked{% endif %} />
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
                 </tbody>
             </table>
         </fieldset>
         <fieldset class="submit-buttons">
-	        <legend>{L_SUBMIT}</legend>
+	        <legend>{{ lang("SUBMIT") }}</legend>
             <div id="loader_save"></div>
-            <button class="lp-send" type="submit" name="btnSend"  id="btnSend"><i class="fa fa-upload"></i> {L_EXPORT_STORE}</button>
+            <button class="lp-send" type="submit" name="btnSend"  id="btnSend"><i class="fa fa-upload"></i> {{ lang("EXPORT_STORE") }}</button>
         </fieldset>   
     </div>
 </form>
-
-<!-- INCLUDE overall_footer.html -->
+{% include 'overall_footer.html' %}

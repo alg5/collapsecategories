@@ -78,5 +78,5 @@ $lang = array_merge($lang, array(
 	'ACP_COLLAPSECATEGORIES_BTN_DELETE'					=> 'Удалить ',
 	'ACP_COLLAPSECATEGORIES_BTN_SAVE'					=> 'Сохранить ',
 	'ACP_COLLAPSECATEGORIES_BTN_CANCEL'					=> 'Вернуть ',
-
+	'ACP_COLLAPSECATEGORIES_BTN_CANCEL'					=> 'Отменить ',
 	));

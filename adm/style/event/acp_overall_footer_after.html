@@ -1,15 +1,15 @@
  {% if S_ADM_COLLAPSECATEGORIES_PAGE %}
-	<script type="text/javascript" >
-		var U_COLLAPSECATEGORIES_PATH_SAVE = '{U_COLLAPSECATEGORIES_PATH_SAVE}'
-		var U_COLLAPSECATEGORIES_PATH_DELETE = '{U_COLLAPSECATEGORIES_PATH_DELETE}'
-		var U_COLLAPSECATEGORIES_PATH_ADD = '{U_COLLAPSECATEGORIES_PATH_ADD}'
-		var U_COLLAPSECATEGORIES_PATH_EDIT = '{U_COLLAPSECATEGORIES_PATH_EDIT}'
+        <script type="text/javascript" >
+                var U_COLLAPSECATEGORIES_PATH_SAVE = '{{ U_COLLAPSECATEGORIES_PATH_SAVE }}'
+                var U_COLLAPSECATEGORIES_PATH_DELETE = '{{ U_COLLAPSECATEGORIES_PATH_DELETE }}'
+                var U_COLLAPSECATEGORIES_PATH_ADD = '{{ U_COLLAPSECATEGORIES_PATH_ADD }}'
+                var U_COLLAPSECATEGORIES_PATH_EDIT = '{{ U_COLLAPSECATEGORIES_PATH_EDIT }}'
 
-		var L_ACP_COLLAPSECATEGORIES_TEXT_OPEN_DEFAULT = '{L_ACP_COLLAPSECATEGORIES_TEXT_OPEN_DEFAULT}'
-		var L_ACP_COLLAPSECATEGORIES_TEXT_CLOSE_DEFAULT = '{L_ACP_COLLAPSECATEGORIES_TEXT_CLOSE_DEFAULT}'
-	</script>   
-	{% INCLUDEJS '@alg_collapsecategories/jquery.noty.js' %}  	
-	{% INCLUDEJS '@alg_collapsecategories/default.js' %}  	
-	{% INCLUDEJS '@alg_collapsecategories/topRight.js' %}  
-	{% INCLUDEJS '@alg_collapsecategories/acp_collapsecategories.js' %}	
+                var L_ACP_COLLAPSECATEGORIES_TEXT_OPEN_DEFAULT = '{{ lang("ACP_COLLAPSECATEGORIES_TEXT_OPEN_DEFAULT") }}'
+                var L_ACP_COLLAPSECATEGORIES_TEXT_CLOSE_DEFAULT = '{{ lang("ACP_COLLAPSECATEGORIES_TEXT_CLOSE_DEFAULT") }}'
+        </script>   
+        {% INCLUDEJS '@alg_collapsecategories/jquery.noty.js' %}  	
+        {% INCLUDEJS '@alg_collapsecategories/default.js' %}  	
+        {% INCLUDEJS '@alg_collapsecategories/topRight.js' %}  
+        {% INCLUDEJS '@alg_collapsecategories/acp_collapsecategories.js' %}	
 {% endif %}

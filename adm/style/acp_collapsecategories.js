@@ -8,7 +8,7 @@ $(document).on('click', '.clps-action-edit', function(e)
 	var block_id = tbl_row.attr('data-block_id');
 	tbl_row.find('.btn_save').show();
 	tbl_row.find('.btn_cancel').show();
-    tbl_row.find('input').prop('disabled', false);
+               tbl_row.find('input').prop('disabled', false);
 	//hide edit and delete buttons
 	tbl_row.find('.clps-action-edit').hide(); 
 	tbl_row.find('.clps-action-delete').hide(); 
